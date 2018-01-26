@@ -73,12 +73,14 @@ bool SlopeFilter<T>::update(const T& mapIn, T& mapOut)
     // Compute slope from surface normal z
     slope = acos(mapOut.at("surface_normal_z", *iterator));
 
-    if (slope < criticalValue_) {
+    /*if (slope < criticalValue_) {
       mapOut.at(type_, *iterator) = 1.0 - slope / criticalValue_;
     }
     else {
       mapOut.at(type_, *iterator) = 0.0;
-    }
+    }*/
+
+    mapOut.at(type_, *iterator) = slope;
 
     if (slope > slopeMax) slopeMax = slope;
   }

@@ -116,12 +116,14 @@ bool RoughnessFilter<T>::update(const T& mapIn, T& mapOut)
     }
     double roughness = sqrt(sum / (nPoints -1));
 
-    if (roughness < criticalValue_) {
+    /*if (roughness < criticalValue_) {
       mapOut.at(type_, *iterator) = 1.0 - roughness / criticalValue_;
     }
     else {
       mapOut.at(type_, *iterator) = 0.0;
-    }
+    }*/
+    
+    mapOut.at(type_, *iterator) = roughness;
 
     if (roughness > roughnessMax) roughnessMax = roughness;
   }

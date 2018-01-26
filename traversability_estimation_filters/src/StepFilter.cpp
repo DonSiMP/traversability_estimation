@@ -167,13 +167,14 @@ bool StepFilter<T>::update(const T& mapIn, T& mapOut)
     }
 
     if (isValid) {
-      step = std::min(stepMax,
+      mapOut.at(type_, *iterator) = stepMax;
+      /*step = std::min(stepMax,
                       (double) nCells / (double) nCellCritical_ * stepMax);
       if (step < criticalValue_) {
         mapOut.at(type_, *iterator) = 1.0 - step / criticalValue_;
       } else {
         mapOut.at(type_, *iterator) = 0.0;
-      }
+      }*/
     }
   }
   // Remove unnecessary layer.
